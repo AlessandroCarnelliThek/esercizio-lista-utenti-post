@@ -1,25 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Link, Switch, Route } from 'react-router-dom';
+
+import ListaUtenti from './components/ListaUtenti.js';
+import ListaPosts from './components/ListaPosts.js';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <nav>
+        <Link exact="true" to="/">Lista Utenti</Link>
+      </nav>  
+      <div>
+        <Switch>
+          <Route exact path="/">
+            <ListaUtenti />
+          </Route>
+          <Route path="/posts/:id">
+            <ListaPosts />
+          </Route>
+        </Switch>
+      </div>
+    </BrowserRouter>
   );
 }
+//non vi sento. 
+//facciamo 15 minuti di pausa mentre sistemo
 
 export default App;
